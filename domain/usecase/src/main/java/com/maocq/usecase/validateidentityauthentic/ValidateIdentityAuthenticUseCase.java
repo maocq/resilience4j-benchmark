@@ -1,5 +1,6 @@
 package com.maocq.usecase.validateidentityauthentic;
 
+import com.maocq.model.hash.Hash;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -7,6 +8,6 @@ import reactor.core.publisher.Mono;
 public class ValidateIdentityAuthenticUseCase {
 
     public Mono<String> handle(String text) {
-        return Mono.just("Validate identity Authentic: " + text);
+        return Mono.just("Validate identity Authentic: " + text + " " + Hash.hash(text));
     }
 }

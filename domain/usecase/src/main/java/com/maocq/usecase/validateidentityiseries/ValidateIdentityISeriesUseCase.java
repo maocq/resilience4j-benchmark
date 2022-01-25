@@ -1,5 +1,6 @@
 package com.maocq.usecase.validateidentityiseries;
 
+import com.maocq.model.hash.Hash;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -18,7 +19,7 @@ public class ValidateIdentityISeriesUseCase {
             if (text.equals("timeout"))
                 return Mono.just("Slow validate identity iSeries  " + text).delayElement(Duration.ofSeconds(3));
 
-            return Mono.just("Validate identity iSeries " + text);
+            return Mono.just("Validate identity iSeries " + text + " " + Hash.hash(text));
         });
     }
 }
